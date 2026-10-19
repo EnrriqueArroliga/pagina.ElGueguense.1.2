@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Güegüense - Patrimonio Inmaterial de la Humanidad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Encabezado / Hero con Imagen de Portada -->
+    <header class="header">
+        <div class="overlay"></div>
+        <div class="container header-content">
+            <span class="badge-unesco"> Patrimonio Cultural Inmaterial de la Humanidad </span>
+            
+            <!-- Imagen en el Encabezado -->
+            <div class="header-image-container">
+                <img src="encabezado.jpg" alt="Portada El Güegüense" class="header-img" onerror="this.onerror=null; this.src='4.jpg';">
+            </div>
+
+            <h1 class="main-title">EL GÜEGÜENSE</h1>
+            <p class="subtitle">La Máxima Expresión del Teatro, la Música y la Sátira Colonial Nicaragüense</p>
+            <div class="header-divider"></div>
+        </div>
+    </header>
+
+    <!-- Navegación principal estilo pestañas flotantes -->
+    <nav class="navbar">
+        <div class="container nav-links">
+            <a href="#historia" class="nav-item">🏛️ Origen e Historia</a>
+            <a href="#galeria" class="nav-item">🖼️ Galería</a>
+            <a href="#danza" class="nav-item">💃 La Danza</a>
+            <a href="#curiosidades" class="nav-item">💡 Datos Curiosos</a>
+            <a href="#personajes" class="nav-item">🎭 Personajes</a>
+            <a href="#significado" class="nav-item">📜 Significado Cultural</a>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="container content">
+
+        <!-- Sección 1: Origen e Historia -->
+        <section id="historia" class="card grid-2">
+            <div class="text-block">
+                <h2>Origen e Historia</h2>
+                <p>
+                    <strong>El Güegüense</strong> (conocido también como <em>Macho Ratón</em>) es una obra dramática, satírica y musical del siglo XVII. Es la primera expresión teatral y literaria de Nicaragua y una de las obras coloniales más representativas de toda América Latina. En 2005, la UNESCO la proclamó Patrimonio Inmaterial de la Humanidad.
+                </p>
+                <p>
+                    Nació en el pacífico nicaragüense (principalmente asociado a Diriamba, Carazo). Fue redactada por un autor anónimo en una mezcla de español y náhuatl colonial, concebida como un teatro callejero que se representaba frente a las autoridades españolas sin que estas comprendieran del todo su mensaje de protesta.
+                </p>
+            </div>
+            <div class="image-block">
+                <img src="1.jpg" alt="Representación de El Güegüense" onerror="this.onerror=null; this.src='1.png';">
+            </div>
+        </section>
+
+        <!-- Sección 2: Galería destacada -->
+        <section id="galeria" class="card">
+            <h2>Galería Representativa</h2>
+            <p class="section-intro">Imágenes emblemáticas del vestuario, las máscaras y los personajes tradicionales.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="1.jpg" alt="El Güegüense" onerror="this.onerror=null; this.src='1.png';">
+                    <div class="caption">El Güegüense (El Viejo Sabio)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="2.jpg" alt="El Macho Ratón" onerror="this.onerror=null; this.src='2.png';">
+                    <div class="caption">El Macho Ratón</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="3.jpg" alt="Trajes Tradicionales" onerror="this.onerror=null; this.src='3.png';">
+                    <div class="caption">Máscaras de Madera Pintada</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="4.jpg" alt="Danza Folclórica" onerror="this.onerror=null; this.src='4.png';">
+                    <div class="caption">Danza y Son de los Machos</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Cómo se baila la danza + Video Grande de YouTube -->
+        <section id="danza" class="card">
+            <h2>¿Cómo se baila la Danza del Güegüense?</h2>
+            <p class="section-intro">El baile combina elegancia colonial, zapateado aborigen y movimientos jocosos.</p>
+            
+            <div class="text-block">
+                <p>
+                    La danza consta de <strong>14 sones tradicionales</strong> ejecutados con violín, guitarra, guitarrilla y tambor (atabal). Cada personaje posee un ritmo y un estilo de baile particular:
+                </p>
+                <ul style="margin-bottom: 20px;">
+                    <li><strong>El Abanico y el Chinchín:</strong> El Güegüense y los españoles portan un abanico de plumas y sonajas de metal (chinchines) para marcar el compás.</li>
+                    <li><strong>El Trote de los Machos:</strong> Los bailarines con máscaras de equinos trotan, brincan y chocan entre sí simulando la fuerza de las bestias de carga.</li>
+                    <li><strong>Reverencias y Sordera Mímica:</strong> Los diálogos van acompañados de gestos exagerados donde el viejo finge no escuchar al Gobernador.</li>
+                </ul>
+            </div>
+
+            <!-- Video en contenedor grande -->
+            <div class="video-container-wrapper video-large">
+                <div class="video-responsive">
+                    <iframe 
+                        src="https://www.youtube.com/embed/pnLwsQUaYIQ" 
+                        title="Danza de El Güegüense" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- Botón directo a YouTube -->
+                <div class="youtube-link-box">
+                    <a href="https://www.youtube.com/watch?v=pnLwsQUaYIQ" target="_blank" class="btn-youtube">
+                        📺 Ver video directamente en YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: Datos Curiosos -->
+        <section id="curiosidades" class="card">
+            <h2> Datos Curiosos que Quizás No Sabías</h2>
+            <p class="section-intro">Detalles fascinantes sobre la cultura, los secretos y la historia de la obra.</p>
+
+            <div class="curiosities-grid">
+                <div class="curiosity-box">
+                    <div class="curiosity-icon"></div>
+                    <h3>El Idioma "Mangue" o Nahuñol</h3>
+                    <p>La obra está redactada en una mezcla lingüística única entre el español colonial y el náhuatl, conocida entre historiadores como "nahuñol" para burlar a las autoridades.</p>
+                </div>
+
+                <div class="curiosity-box">
+                    <div class="curiosity-icon"></div>
+                    <h3>La Estrategia de la Sordera</h3>
+                    <p>El Güegüense utiliza la "sordera fingida" como táctica de resistencia. Cuando el Gobernador le exige impuestos, el viejo responde con juegos de palabras y malentendidos ingeniosos.</p>
+                </div>
+
+                <div class="curiosity-box">
+                    <div class="curiosity-icon"></div>
+                    <h3>Máscaras con Rasgos Marcados</h3>
+                    <p>Las máscaras de madera reflejan las clases sociales: los españoles tienen ojos azules, bigotes y piel clara; mientras que los mestizos e indígenas tienen rasgos locales o de bestias.</p>
+                </div>
+
+                <div class="curiosity-box">
+                    <div class="curiosity-icon"></div>
+                    <h3>Sombreros de Plumas de Pavo Real</h3>
+                    <p>Los sombreros altos adornados con plumas de pavo real y cintas de colores simbolizan la riqueza colonial y la vistosidad del ave ancestral.</p>
+                </div>
+
+                <div class="curiosity-box">
+                    <div class="curiosity-icon"></div>
+                    <h3>Reparto Históricamente Masculino</h3>
+                    <p>En la época colonial, todos los papeles (incluso los femeninos como Doña Suche Malinche) eran representados únicamente por hombres disfrazados.</p>
+                </div>
+
+                <div class="curiosity-box">
+                    <div class="curiosity-icon"></div>
+                    <h3>Cuna en Carazo</h3>
+                    <p>Aunque es un símbolo nacional de toda Nicaragua, las representaciones más tradicionales y arraigadas se celebran cada mes de enero en Diriamba, Carazo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Personajes principales -->
+        <section id="personajes" class="card grid-2 reverse">
+            <div class="image-block">
+                <img src="2.jpg" alt="Personajes del Güegüense" onerror="this.onerror=null; this.src='2.png';">
+            </div>
+            <div class="text-block">
+                <h2>Personajes Principales y Reparto</h2>
+                <ul>
+                    <li><strong>El Güegüense:</strong> Protagonista astuto, comerciante ambulante que presume riquezas imaginarias.</li>
+                    <li><strong>El Gobernador Tastuanes:</strong> Autoridad colonial española que intenta cobrar impuestos sin éxito.</li>
+                    <li><strong>Don Forcico:</strong> Hijo leal y cómplice del Güegüense que sigue las burlas de su padre.</li>
+                    <li><strong>Don Ambrosio:</strong> Hijo ilegítimo que desmiente las mentiras del Güegüense ante el Gobernador.</li>
+                    <li><strong>Doña Suche Malinche:</strong> Hija del Gobernador ofreciendo matrimonio como parte de las negociaciones.</li>
+                    <li><strong>Los Machos (Macho Moto, Macho Viejo, Macho Guajaqueño):</strong> Bestias de carga que acompañan al comerciante.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección 6: Significado Cultural (Bloque/Espacio Aparte) -->
+        <section id="significado" class="card grid-2">
+            <div class="text-block">
+                <h2>Significado Cultural e Identidad</h2>
+                <p>
+                    Más allá de ser una simple comedia colonial, <strong>El Güegüense</strong> es considerado el arquetipo de la identidad y del carácter nicaragüense. Representa la viveza, la picardía, la creatividad y la habilidad de responder con humor ante las dificultades.
+                </p>
+                <p>
+                    A través de la sátira, la obra demuestra cómo el pueblo mestizo e indígena logró defender su dignidad frente a la opresión del sistema colonial. Es un testimonio vivo de resistencia pacífica donde la inteligencia y la palabra superan a la fuerza militar y tributaria.
+                </p>
+            </div>
+            <div class="image-block">
+                <img src="3.jpg" alt="Celebración del Güegüense" onerror="this.onerror=null; this.src='3.png';">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 - El Güegüense: Orgullo Folclórico e Identidad de Nicaragua</p>
+        </div>
+    </footer>
+
+</body>
+</html>
