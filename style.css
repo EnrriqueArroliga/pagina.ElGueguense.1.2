@@ -1,6 +1,4 @@
-/* ==========================================================================
-   RESET Y VARIABLES DE DISEÑO
-   ========================================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -65,7 +63,6 @@ html {
     z-index: 2;
 }
 
-/* Imagen superior en el encabezado */
 .header-image-container {
     margin: 15px auto 20px auto;
     max-width: 550px;
@@ -152,7 +149,7 @@ html {
     padding: 7px 12px;
     font-size: 0.82rem;
     font-weight: 600;
-    border-radius: 25px;
+    border-radius: 20px;
     transition: all 0.3s ease;
     border: 1px solid transparent;
 }
@@ -193,6 +190,13 @@ html {
 }
 
 .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.grid-2.reverse {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 35px;
@@ -303,7 +307,7 @@ html {
 }
 
 /* ==========================================================================
-   ELEMENTOS CULTURALES (MÚSICA, DANZA, VESTUARIOS, MÁSCARAS)
+   ELEMENTOS CULTURALES
    ========================================================================== */
 .elements-grid {
     display: grid;
@@ -340,60 +344,10 @@ html {
 .element-box p {
     font-size: 0.93rem;
     color: #444444;
-    line-height: 1.5;
 }
 
 /* ==========================================================================
-   NUEVO ESTILO: FRAGMENTOS Y DIÁLOGOS CÉLEBRES (BLOCKQUOTES)
-   ========================================================================== */
-.quotes-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
-
-.quote-box {
-    background-color: #FAF8F5;
-    padding: 24px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    font-style: italic;
-    color: #333333;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.quote-red {
-    border-left: 5px solid var(--primary-red);
-}
-
-.quote-gold {
-    border-left: 5px solid var(--accent-gold);
-}
-
-.quote-box p {
-    font-size: 1.02rem;
-    margin-bottom: 15px;
-}
-
-.quote-box cite {
-    font-weight: bold;
-    font-style: normal;
-    font-size: 0.9rem;
-    text-align: right;
-}
-
-.quote-red cite {
-    color: var(--primary-red);
-}
-
-.quote-gold cite {
-    color: var(--gold-dark);
-}
-
-/* ==========================================================================
-   VIDEO GRANDE DE YOUTUBE
+   VIDEOS DE YOUTUBE
    ========================================================================== */
 .video-large {
     width: 100%;
@@ -445,6 +399,148 @@ html {
 }
 
 /* ==========================================================================
+   QUIZ INTERACTIVO CON CONTEO (PURO CSS)
+   ========================================================================== */
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+    /* ⬇️ Creamos la variable CSS "aciertos" y la iniciamos en 0 */
+    counter-reset: aciertos; 
+}
+
+.quiz-box {
+    background-color: #FDFBf7;
+    border: 1px solid #E5DFD3;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.quiz-box h3 {
+    color: var(--text-dark);
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+}
+
+.quiz-box input[type="radio"] {
+    display: none;
+}
+
+.quiz-btn {
+    display: inline-block;
+    background-color: #FFFFFF;
+    border: 2px solid #DDDDDD;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: all 0.2s ease;
+}
+
+.quiz-btn:hover {
+    border-color: var(--primary-red);
+    background-color: #fcebeb;
+}
+
+.quiz-box input[type="radio"]:checked + .quiz-btn {
+    background-color: var(--primary-red);
+    color: #FFFFFF;
+    border-color: var(--primary-red);
+}
+
+.feedback {
+    display: none;
+    margin-top: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.msg-right {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+    border-left: 4px solid #4CAF50;
+}
+
+.msg-wrong {
+    background-color: #FFEBEE;
+    color: #C62828;
+    border-left: 4px solid #F44336;
+}
+
+/* LÓGICA CSS PARA MOSTRAR LAS RESPUESTAS AL HACER CLIC */
+#q1-v:checked ~ .q1-v-msg, #q1-f:checked ~ .q1-f-msg { display: block; }
+#q2-v:checked ~ .q2-v-msg, #q2-f:checked ~ .q2-f-msg { display: block; }
+#q3-v:checked ~ .q3-v-msg, #q3-f:checked ~ .q3-f-msg { display: block; }
+#q4-v:checked ~ .q4-v-msg, #q4-f:checked ~ .q4-f-msg { display: block; }
+#q5-v:checked ~ .q5-v-msg, #q5-f:checked ~ .q5-f-msg { display: block; }
+#q6-v:checked ~ .q6-v-msg, #q6-f:checked ~ .q6-f-msg { display: block; }
+#q7-v:checked ~ .q7-v-msg, #q7-f:checked ~ .q7-f-msg { display: block; }
+#q8-v:checked ~ .q8-v-msg, #q8-f:checked ~ .q8-f-msg { display: block; }
+
+/* 🧠 LÓGICA MATEMÁTICA: SI UNA CAJA "TIENE" UNA RESPUESTA CORRECTA MARCADA, SUMA 1 */
+.quiz-box:has(.correct-answer:checked) {
+    counter-increment: aciertos;
+}
+
+/* DISEÑO DEL MARCADOR DE PUNTOS */
+.quiz-score {
+    background: linear-gradient(135deg, #FFD700, #C59B27);
+    color: #141414;
+    text-align: center;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-top: 35px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    border: 3px solid #FFFFFF;
+}
+
+.quiz-score h3 {
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    color: #8B0000;
+}
+
+/* INYECTAR EL NÚMERO DE PUNTOS DINÁMICAMENTE EN PANTALLA */
+.quiz-score::after {
+    content: counter(aciertos) " de 8 aciertos";
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #8B0000;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
+}
+
+/* Botón de Reinicio (Reset) */
+.quiz-reset-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #444444, #222222);
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-reset:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #555555, #333333);
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 .footer {
@@ -464,7 +560,7 @@ html {
         font-size: 2.2rem;
         letter-spacing: 2px;
         -webkit-text-fill-color: initial;
-        color: #FFD700;
+        color: #ffbb00;
         background: none;
     }
 
@@ -488,10 +584,6 @@ html {
     .grid-2.reverse {
         display: flex;
         flex-direction: column-reverse;
-    }
-
-    .quotes-container {
-        grid-template-columns: 1fr;
     }
 
     .nav-item {
