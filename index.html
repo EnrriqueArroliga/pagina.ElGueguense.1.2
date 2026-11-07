@@ -4,131 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Güegüense - Patrimonio Inmaterial de la Humanidad</title>
-    
-    <!-- Todo el diseño CSS está ahora incrustado directamente aquí para evitar errores de Caché -->
-    <style>
-        /* RESET Y VARIABLES */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary-red: #8B0000;
-            --accent-gold: #FFD700;
-            --dark-bg: #141414;
-            --card-bg: #FFFFFF;
-            --body-bg: #F5F2EB;
-            --text-dark: #2B2B2B;
-            --text-muted: #666666;
-            --border-radius: 14px;
-            --shadow-main: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-        html { scroll-behavior: smooth; font-family: 'Segoe UI', sans-serif; background-color: var(--body-bg); color: var(--text-dark); line-height: 1.6; }
-        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
-
-        /* ENCABEZADO */
-        .header { position: relative; background-color: #2a0808; background-image: linear-gradient(135deg, rgba(42, 8, 8, 0.85) 0%, rgba(26, 3, 3, 0.95) 100%), url('4.jpg'); background-size: cover; background-position: center; color: #ffffff; text-align: center; padding: 50px 20px; border-bottom: 4px solid var(--accent-gold); }
-        .header .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%); z-index: 1; }
-        .header-content { position: relative; z-index: 2; }
-        .header-image-container { margin: 15px auto 20px auto; max-width: 550px; }
-        .header-img { width: 100%; max-height: 250px; object-fit: cover; border-radius: var(--border-radius); border: 3px solid var(--accent-gold); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
-        .badge-unesco { display: inline-block; background: rgba(255, 215, 0, 0.15); border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 6px 18px; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; }
-        .main-title { font-size: 3.5rem; font-weight: 900; color: #FFD700; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); margin-bottom: 12px; }
-        .subtitle { font-size: 1.2rem; font-weight: 300; color: #E0E0E0; max-width: 700px; margin: 0 auto; }
-        .header-divider { width: 80px; height: 4px; background: var(--accent-gold); margin: 20px auto 0 auto; border-radius: 2px; }
-
-        /* NAVEGACIÓN */
-        .navbar { background-color: var(--dark-bg); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.4); padding: 8px 0; }
-        .nav-links { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
-        .nav-item { color: #DDDDDD; text-decoration: none; padding: 7px 12px; font-size: 0.82rem; font-weight: 600; border-radius: 20px; transition: all 0.3s ease; }
-        .nav-item:hover { background-color: rgba(255, 215, 0, 0.12); color: var(--accent-gold); }
-
-        /* TARJETAS Y CONTENIDO */
-        .content { margin-top: 40px; margin-bottom: 50px; }
-        .card { background-color: var(--card-bg); border-radius: var(--border-radius); padding: 35px; margin-bottom: 35px; box-shadow: var(--shadow-main); border-top: 4px solid var(--primary-red); }
-        .card h2 { color: var(--primary-red); margin-bottom: 15px; font-size: 2rem; }
-        .section-intro { color: var(--text-muted); margin-bottom: 25px; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: center; }
-        .image-block img { width: 100%; height: 300px; object-fit: cover; border-radius: var(--border-radius); box-shadow: 0 6px 15px rgba(0,0,0,0.12); }
-        .text-block ul { margin-left: 20px; } .text-block li { margin-bottom: 10px; }
-
-        /* GALERÍA, CURIOSIDADES Y ELEMENTOS */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .gallery-item { position: relative; border-radius: var(--border-radius); overflow: hidden; }
-        .gallery-item img { width: 100%; height: 230px; object-fit: cover; display: block; }
-        .gallery-item .caption { position: absolute; bottom: 0; width: 100%; padding: 12px; background: rgba(0,0,0,0.8); color: var(--accent-gold); text-align: center; font-weight: bold; }
-        
-        .curiosities-grid, .elements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
-        .curiosity-box, .element-box { background-color: #FAF8F5; border: 1px solid #EAE3D2; border-radius: var(--border-radius); padding: 22px; border-top: 4px solid var(--primary-red); }
-        .curiosity-box h3, .element-box h3 { color: var(--primary-red); margin-bottom: 8px; }
-
-        /* VIDEOS */
-        .video-large { width: 100%; max-width: 950px; margin: 20px auto 0 auto; }
-        .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; border-radius: var(--border-radius); overflow: hidden; background: #000; }
-        .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .youtube-link-box { text-align: center; margin-top: 15px; }
-        .btn-youtube { display: inline-block; background: #B30000; color: #FFF; text-decoration: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; }
-
-        /* ==========================================================================
-           QUIZ INTERACTIVO (CORREGIDO PARA CUALQUIER NAVEGADOR)
-           ========================================================================== */
-        .quiz-container { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 20px; 
-            counter-reset: aciertos; 
-        }
-        .quiz-box { background-color: #FDFBf7; border: 1px solid #E5DFD3; padding: 22px; border-radius: var(--border-radius); }
-        .quiz-box h3 { margin-bottom: 15px; font-size: 1.05rem; }
-        
-        /* OCULTAR BOLITAS DE RADIO */
-        .quiz-box input[type="radio"] { display: none !important; }
-        
-        /* DISEÑO DE BOTONES FALSOS Y VERDADEROS */
-        .quiz-btn { display: inline-block; background: #FFF; border: 2px solid #DDD; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-right: 10px; margin-bottom: 10px; color: #333; transition: 0.3s; }
-        .quiz-box input[type="radio"]:checked + .quiz-btn { background-color: var(--primary-red); color: #FFF; border-color: var(--primary-red); }
-
-        /* OCULTAR MENSAJES POR DEFECTO */
-        .feedback { display: none !important; margin-top: 15px; padding: 12px; border-radius: 8px; font-weight: 600; }
-        .msg-right { background-color: #E8F5E9; color: #2E7D32; border-left: 4px solid #4CAF50; }
-        .msg-wrong { background-color: #FFEBEE; color: #C62828; border-left: 4px solid #F44336; }
-
-        /* LÓGICA DE MOSTRAR EL MENSAJE AL HACER CLIC */
-        input.wrong-answer:checked ~ .msg-wrong { display: block !important; }
-        input.correct-answer:checked ~ .msg-right { display: block !important; }
-
-        /* CONTEO DE PUNTOS */
-        .quiz-box:has(input.correct-answer:checked) { counter-increment: aciertos; }
-        
-        .quiz-score { background: linear-gradient(135deg, #FFD700, #C59B27); text-align: center; padding: 20px; border-radius: var(--border-radius); margin-top: 35px; border: 3px solid #FFF; }
-        .quiz-score h3 { color: #8B0000; font-size: 1.4rem; margin-bottom: 5px; }
-        .quiz-score::after { content: counter(aciertos) " de 8 aciertos"; display: block; font-size: 2.2rem; font-weight: 900; color: #8B0000; }
-
-        .quiz-reset-container { text-align: center; margin-top: 25px; }
-        .btn-reset { background: #333; color: #FFF; border: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; cursor: pointer; }
-        
-        .footer { background-color: var(--dark-bg); color: #ffffff; text-align: center; padding: 30px 0; border-top: 3px solid var(--primary-red); }
-
-        /* RESPONSIVO MÓVILES */
-        @media (max-width: 768px) {
-            .quiz-container { grid-template-columns: 1fr; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .main-title { font-size: 2.2rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Encabezado / Hero con Imagen de Portada -->
     <header class="header">
         <div class="overlay"></div>
         <div class="container header-content">
             <span class="badge-unesco">✨ Patrimonio Cultural Inmaterial de la Humanidad - UNESCO</span>
+            
+            <!-- Imagen en el Encabezado -->
             <div class="header-image-container">
-                <img src="encabezado.jpg" alt="Portada" class="header-img" onerror="this.onerror=null; this.src='4.jpg';">
+                <img src="encabezado.jpg" alt="Portada El Güegüense" class="header-img" onerror="this.onerror=null; this.src='4.jpg';">
             </div>
+
             <h1 class="main-title">EL GÜEGÜENSE</h1>
             <p class="subtitle">La Máxima Expresión del Teatro, la Música y la Sátira Colonial Nicaragüense</p>
             <div class="header-divider"></div>
         </div>
     </header>
 
+    <!-- Navegación principal estilo pestañas flotantes -->
     <nav class="navbar">
         <div class="container nav-links">
             <a href="#historia" class="nav-item">🏛️ Origen e Historia</a>
@@ -145,20 +42,253 @@
         </div>
     </nav>
 
+    <!-- Contenido Principal -->
     <main class="container content">
-        <!-- (Aquí van las secciones de historia, resumen, danza que ya estaban perfectas) -->
+
+        <!-- Sección 1: Origen e Historia -->
         <section id="historia" class="card grid-2">
             <div class="text-block">
                 <h2>Origen e Historia</h2>
-                <p><strong>El Güegüense</strong> (conocido también como <em>Macho Ratón</em>) es una obra dramática, satírica y musical del siglo XVII. En 2005, la UNESCO la proclamó Patrimonio Inmaterial de la Humanidad.</p>
+                <p>
+                    <strong>El Güegüense</strong> (conocido también como <em>Macho Ratón</em>) es una obra dramática, satírica y musical del siglo XVII. Es la primera expresión teatral y literaria de Nicaragua y una de las obras coloniales más representativas de toda América Latina. En 2005, la UNESCO la proclamó Patrimonio Inmaterial de la Humanidad.
+                </p>
+                <p>
+                    Nació en el pacífico nicaragüense (principalmente asociado a Diriamba, Carazo). Fue redactada por un autor anónimo en una mezcla de español y náhuatl colonial, concebida como un teatro callejero que se representaba frente a las autoridades españolas sin que estas comprendieran del todo su mensaje de protesta.
+                </p>
             </div>
-            <div class="image-block"><img src="1.jpg" onerror="this.src='1.png';"></div>
+            <div class="image-block">
+                <img src="1.jpg" alt="Representación de El Güegüense" onerror="this.onerror=null; this.src='1.png';">
+            </div>
         </section>
 
-        <!-- QUIZ INTERACTIVO UNIFICADO -->
+        <!-- Sección 2: Resumen de la Obra -->
+        <section id="resumen" class="card grid-2 reverse">
+            <div class="image-block">
+                <img src="4.jpg" alt="Resumen de la trama de El Güegüense" onerror="this.onerror=null; this.src='4.png';">
+            </div>
+            <div class="text-block">
+                <h2>Resumen: ¿De qué trata la obra?</h2>
+                <p>
+                    La trama gira en torno a <strong>El Güegüense</strong>, un viejo y astuto comerciante ambulante que viaja junto a sus dos hijos (Don Forcico y Don Ambrosio) y sus bestias de carga ("machos") vendiendo mercancías por los caminos reales del pacífico colonial.
+                </p>
+                <p>
+                    El conflicto central se desencadena cuando el <strong>Gobernador Tastuanes</strong> le exige el pago de impuestos y tributos comerciales. Para evitar pagar un solo centavo, el viejo recurre a una brillante estrategia de resistencia: fingir sordera, cambiar las palabras con picardía, dar respuestas disparatadas y presumir riquezas falsas.
+                </p>
+                <p>
+                    Al final, mediante enredos y negociaciones satíricas sobre un matrimonio arreglado, El Güegüense logra burlar por completo a la autoridad española, coronando su victoria con música y baile.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sección 3: Galería destacada -->
+        <section id="galeria" class="card">
+            <h2>Galería Representativa</h2>
+            <p class="section-intro">Imágenes emblemáticas del vestuario, las máscaras y los personajes tradicionales.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="1.jpg" alt="El Güegüense" onerror="this.onerror=null; this.src='1.png';">
+                    <div class="caption">El Güegüense (El Viejo Sabio)</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="2.jpg" alt="El Macho Ratón" onerror="this.onerror=null; this.src='2.png';">
+                    <div class="caption">El Macho Ratón</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="3.jpg" alt="Trajes Tradicionales" onerror="this.onerror=null; this.src='3.png';">
+                    <div class="caption">Máscaras de Madera Pintada</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="4.jpg" alt="Danza Folclórica" onerror="this.onerror=null; this.src='4.png';">
+                    <div class="caption">Danza y Son de los Machos</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: La Danza -->
+        <section id="danza" class="card">
+            <h2>¿Cómo se baila la Danza del Güegüense?</h2>
+            <p class="section-intro">El baile combina elegancia colonial, zapateado aborigen y movimientos jocosos.</p>
+            
+            <div class="text-block">
+                <p>
+                    La danza consta de <strong>14 sones tradicionales</strong> ejecutados con violín, guitarra, guitarrilla y tambor (atabal). Cada personaje posee un ritmo y un estilo de baile particular:
+                </p>
+                <ul style="margin-bottom: 20px;">
+                    <li><strong>El Abanico y el Chinchín:</strong> El Güegüense y los españoles portan un abanico de plumas y sonajas de metal (chinchines) para marcar el compás.</li>
+                    <li><strong>El Trote de los Machos:</strong> Los bailarines con máscaras de equinos trotan, brincan y chocan entre sí simulando la fuerza de las bestias de carga.</li>
+                    <li><strong>Reverencias y Sordera Mímica:</strong> Los diálogos van acompañados de gestos exagerados donde el viejo finge no escuchar al Gobernador.</li>
+                </ul>
+            </div>
+
+            <div class="video-container-wrapper video-large">
+                <div class="video-responsive">
+                    <iframe 
+                        src="https://www.youtube.com/embed/pnLwsQUaYIQ" 
+                        title="Danza de El Güegüense" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="youtube-link-box">
+                    <a href="https://www.youtube.com/watch?v=pnLwsQUaYIQ" target="_blank" class="btn-youtube">
+                        📺 Ver video de la danza en YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Espacio Video 2: Lectura -->
+        <section id="lectura" class="card">
+            <h2>Lectura y Diálogos Completos de la Obra</h2>
+            <p class="section-intro">Escucha la narración detallada, los parlamentos y la riqueza del guión literario original.</p>
+            
+            <div class="video-container-wrapper video-large">
+                <div class="video-responsive">
+                    <iframe 
+                        src="https://www.youtube.com/embed/5W8OgOfwz64" 
+                        title="Lectura y Diálogos Completos" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="youtube-link-box">
+                    <a href="https://www.youtube.com/watch?v=5W8OgOfwz64" target="_blank" class="btn-youtube">
+                        📺 Ver lectura completa en YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Espacio Video 3: Representación -->
+        <section id="obra-completa" class="card">
+            <h2>Representación Teatral Completa</h2>
+            <p class="section-intro">Disfruta de la escenificación completa en vivo con vestuario, diálogos y bailes tradicionales.</p>
+            
+            <div class="video-container-wrapper video-large">
+                <div class="video-responsive">
+                    <iframe 
+                        src="https://www.youtube.com/embed/URAGBI_v-_Y" 
+                        title="Representación Teatral Completa" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="youtube-link-box">
+                    <a href="https://www.youtube.com/watch?v=URAGBI_v-_Y" target="_blank" class="btn-youtube">
+                        📺 Ver obra teatral completa en YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Datos Curiosos -->
+        <section id="curiosidades" class="card">
+            <h2>💡 Datos Curiosos que Quizás No Sabías</h2>
+            <p class="section-intro">Detalles fascinantes sobre la cultura, los secretos y la historia de la obra.</p>
+            <div class="curiosities-grid">
+                <div class="curiosity-box">
+                    <div class="curiosity-icon">🗣️</div>
+                    <h3>El Idioma "Nahuñol"</h3>
+                    <p>La obra está redactada en una mezcla lingüística única entre el español colonial y el náhuatl, para burlar a las autoridades.</p>
+                </div>
+                <div class="curiosity-box">
+                    <div class="curiosity-icon">👂</div>
+                    <h3>La Estrategia de la Sordera</h3>
+                    <p>El Güegüense utiliza la "sordera fingida" como táctica de resistencia para no pagar impuestos.</p>
+                </div>
+                <div class="curiosity-box">
+                    <div class="curiosity-icon">🎭</div>
+                    <h3>Máscaras con Rasgos</h3>
+                    <p>Las máscaras de madera reflejan las clases sociales: los españoles tienen ojos azules, y los mestizos rasgos locales.</p>
+                </div>
+                <div class="curiosity-box">
+                    <div class="curiosity-icon">🦚</div>
+                    <h3>Sombreros Somontanos</h3>
+                    <p>Los sombreros altos adornados con plumas de pavo real simbolizan la vistosidad y la riqueza colonial.</p>
+                </div>
+                <div class="curiosity-box">
+                    <div class="curiosity-icon">💃</div>
+                    <h3>Reparto Masculino</h3>
+                    <p>En la época colonial, todos los papeles (incluso los femeninos) eran representados por hombres disfrazados.</p>
+                </div>
+                <div class="curiosity-box">
+                    <div class="curiosity-icon">📍</div>
+                    <h3>Cuna en Carazo</h3>
+                    <p>Las representaciones más tradicionales se celebran cada mes de enero en Diriamba, Carazo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 6: Personajes principales -->
+        <section id="personajes" class="card grid-2 reverse">
+            <div class="image-block">
+                <img src="2.jpg" alt="Personajes del Güegüense" onerror="this.onerror=null; this.src='2.png';">
+            </div>
+            <div class="text-block">
+                <h2>Personajes Principales y Reparto</h2>
+                <ul>
+                    <li><strong>El Güegüense:</strong> Protagonista astuto, comerciante ambulante.</li>
+                    <li><strong>El Gobernador Tastuanes:</strong> Autoridad colonial española.</li>
+                    <li><strong>Don Forcico:</strong> Hijo leal y cómplice del Güegüense.</li>
+                    <li><strong>Don Ambrosio:</strong> Hijo ilegítimo que desmiente las mentiras del viejo.</li>
+                    <li><strong>Doña Suche Malinche:</strong> Hija del Gobernador.</li>
+                    <li><strong>Los Machos:</strong> Bestias de carga que acompañan al comerciante.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección 7: Elementos Culturales -->
+        <section id="elementos" class="card">
+            <h2>Elementos Culturales: Música, Danza, Vestuario y Máscaras</h2>
+            <p class="section-intro">La combinación de estos cuatro componentes convierte a la obra en una comedia bailete única en el mundo.</p>
+            <div class="elements-grid">
+                <div class="element-box">
+                    <div class="element-icon">🎵</div>
+                    <h3>Elementos Musicales</h3>
+                    <p>La obra cuenta con 14 sones musicales tradicionales interpretados con violín de talalate, guitarra, guitarrilla y atabal.</p>
+                </div>
+                <div class="element-box">
+                    <div class="element-icon">💃</div>
+                    <h3>Las Danzas</h3>
+                    <p>Fusión de zapateados rítmicos aborígenes con cortesías coloniales y el trote de "Los Machos".</p>
+                </div>
+                <div class="element-box">
+                    <div class="element-icon">👑</div>
+                    <h3>Los Vestuarios</h3>
+                    <p>Trajes coloridos con capas de encaje, lentejuelas y sombreros altos decorados con plumas de pavo real.</p>
+                </div>
+                <div class="element-box">
+                    <div class="element-icon">🎭</div>
+                    <h3>Las Máscaras</h3>
+                    <p>Talladas en madera; diferencian a españoles de mestizos mediante el color de ojos y rasgos faciales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 8: Significado Cultural -->
+        <section id="significado" class="card grid-2">
+            <div class="text-block">
+                <h2>Significado Cultural e Identidad</h2>
+                <p>
+                    Más allá de ser una simple comedia colonial, <strong>El Güegüense</strong> es considerado el arquetipo de la identidad y del carácter nicaragüense. Representa la viveza, la picardía, la creatividad y la habilidad de responder con humor ante las dificultades.
+                </p>
+                <p>
+                    A través de la sátira, la obra demuestra cómo el pueblo mestizo e indígena logró defender su dignidad frente a la opresión del sistema colonial mediante la inteligencia pacífica.
+                </p>
+            </div>
+            <div class="image-block">
+                <img src="3.jpg" alt="Celebración del Güegüense" onerror="this.onerror=null; this.src='3.png';">
+            </div>
+        </section>
+
+        <!-- SECCIÓN 9: QUIZ INTERACTIVO (100% CSS CON CONTEO DE PUNTOS) -->
         <section id="quiz" class="card">
             <h2>✅ Pon a Prueba tu Conocimiento</h2>
-            <p class="section-intro">Responde las preguntas para ver tu puntuación en tiempo real. (Diseño anti-caché activado)</p>
+            <p class="section-intro">Responde las preguntas para ver tu puntuación en tiempo real (tecnología basada en variables CSS, sin JavaScript).</p>
 
             <form>
                 <div class="quiz-container">
@@ -169,8 +299,8 @@
                         <label for="q1-v" class="quiz-btn">Verdadero</label>
                         <input type="radio" id="q1-f" name="q1" class="correct-answer">
                         <label for="q1-f" class="quiz-btn">Falso</label>
-                        <div class="feedback msg-wrong">❌ Incorrecto. Fue escrito en una mezcla de español y náhuatl.</div>
-                        <div class="feedback msg-right">✅ ¡Correcto! Fue redactado en español y náhuatl colonial.</div>
+                        <div class="feedback msg-wrong">❌ Incorrecto. Fue escrito en una mezcla de español y náhuatl ("Nahuñol") para burlar a las autoridades.</div>
+                        <div class="feedback msg-right">✅ ¡Correcto! Fue redactado en una mezcla de español y náhuatl colonial.</div>
                     </div>
 
                     <div class="quiz-box">
@@ -179,8 +309,8 @@
                         <label for="q2-v" class="quiz-btn">Verdadero</label>
                         <input type="radio" id="q2-f" name="q2" class="wrong-answer">
                         <label for="q2-f" class="quiz-btn">Falso</label>
-                        <div class="feedback msg-right">✅ ¡Correcto! La UNESCO le otorgó este título en 2005.</div>
-                        <div class="feedback msg-wrong">❌ Incorrecto. Sí fue declarada en 2005.</div>
+                        <div class="feedback msg-right">✅ ¡Correcto! La UNESCO le otorgó este título mundial en 2005.</div>
+                        <div class="feedback msg-wrong">❌ Incorrecto. Sí fue declarada Patrimonio de la Humanidad en 2005.</div>
                     </div>
 
                     <div class="quiz-box">
@@ -189,62 +319,63 @@
                         <label for="q3-v" class="quiz-btn">Verdadero</label>
                         <input type="radio" id="q3-f" name="q3" class="correct-answer">
                         <label for="q3-f" class="quiz-btn">Falso</label>
-                        <div class="feedback msg-wrong">❌ Incorrecto. Todos los personajes eran interpretados por hombres.</div>
-                        <div class="feedback msg-right">✅ ¡Excelente! Históricamente, todos eran hombres disfrazados.</div>
+                        <div class="feedback msg-wrong">❌ Incorrecto. En la época colonial, todos los personajes (incluidos los femeninos) eran interpretados por hombres.</div>
+                        <div class="feedback msg-right">✅ ¡Excelente! Históricamente, todos los papeles eran interpretados por hombres disfrazados.</div>
                     </div>
 
                     <div class="quiz-box">
-                        <h3>4. La estrategia principal de El Güegüense para evadir impuestos es la "sordera fingida".</h3>
+                        <h3>4. La estrategia principal que usa El Güegüense para evadir el pago de impuestos es la "sordera fingida".</h3>
                         <input type="radio" id="q4-v" name="q4" class="correct-answer">
                         <label for="q4-v" class="quiz-btn">Verdadero</label>
                         <input type="radio" id="q4-f" name="q4" class="wrong-answer">
                         <label for="q4-f" class="quiz-btn">Falso</label>
-                        <div class="feedback msg-right">✅ ¡Correcto! Finge estar sordo para confundir al Gobernador.</div>
-                        <div class="feedback msg-wrong">❌ Incorrecto. La sordera es precisamente su mayor táctica.</div>
+                        <div class="feedback msg-right">✅ ¡Correcto! Finge estar sordo para confundir al Gobernador Tastuanes con sus respuestas.</div>
+                        <div class="feedback msg-wrong">❌ Incorrecto. La sordera fingida es precisamente su mayor táctica de evasión.</div>
                     </div>
 
                     <div class="quiz-box">
-                        <h3>5. La danza de El Güegüense se baila al ritmo de 14 sones musicales.</h3>
+                        <h3>5. La danza de El Güegüense se baila al ritmo de 14 sones musicales tradicionales.</h3>
                         <input type="radio" id="q5-v" name="q5" class="correct-answer">
                         <label for="q5-v" class="quiz-btn">Verdadero</label>
                         <input type="radio" id="q5-f" name="q5" class="wrong-answer">
                         <label for="q5-f" class="quiz-btn">Falso</label>
-                        <div class="feedback msg-right">✅ ¡Correcto! Son 14 sones ejecutados con instrumentos tradicionales.</div>
-                        <div class="feedback msg-wrong">❌ Incorrecto. Sí son 14 sones musicales en total.</div>
+                        <div class="feedback msg-right">✅ ¡Correcto! Son 14 sones ejecutados con violín de talalate, guitarra, guitarrilla y atabal.</div>
+                        <div class="feedback msg-wrong">❌ Incorrecto. Sí son 14 sones musicales los que conforman la obra.</div>
                     </div>
 
                     <div class="quiz-box">
-                        <h3>6. Don Ambrosio apoya todas las mentiras de su padre ante el Gobernador.</h3>
+                        <h3>6. Don Ambrosio es el hijo cómplice que apoya todas las mentiras de su padre ante el Gobernador.</h3>
                         <input type="radio" id="q6-v" name="q6" class="wrong-answer">
                         <label for="q6-v" class="quiz-btn">Verdadero</label>
                         <input type="radio" id="q6-f" name="q6" class="correct-answer">
                         <label for="q6-f" class="quiz-btn">Falso</label>
-                        <div class="feedback msg-wrong">❌ Incorrecto. Don Ambrosio es quien lo desmiente y lo acusa.</div>
-                        <div class="feedback msg-right">✅ ¡Correcto! Es Don Forcico quien lo apoya, Ambrosio lo desmiente.</div>
+                        <div class="feedback msg-wrong">❌ Incorrecto. Ese es Don Forcico. Don Ambrosio es quien desmiente al Güegüense y lo acusa de mentiroso.</div>
+                        <div class="feedback msg-right">✅ ¡Correcto! Es Don Forcico quien lo apoya, mientras que Don Ambrosio lo desmiente y acusa.</div>
                     </div>
 
                     <div class="quiz-box">
-                        <h3>7. La obra demuestra cómo el pueblo se defendió con fuerza militar.</h3>
+                        <h3>7. La obra demuestra cómo el pueblo indígena logró defenderse utilizando armas y fuerza militar.</h3>
                         <input type="radio" id="q7-v" name="q7" class="wrong-answer">
                         <label for="q7-v" class="quiz-btn">Verdadero</label>
                         <input type="radio" id="q7-f" name="q7" class="correct-answer">
                         <label for="q7-f" class="quiz-btn">Falso</label>
-                        <div class="feedback msg-wrong">❌ Incorrecto. Es un testimonio de resistencia pacífica e inteligencia.</div>
-                        <div class="feedback msg-right">✅ ¡Excelente! Simboliza la resistencia pacífica y la sátira.</div>
+                        <div class="feedback msg-wrong">❌ Incorrecto. Es un testimonio de resistencia pacífica, usando la inteligencia, el humor y la palabra.</div>
+                        <div class="feedback msg-right">✅ ¡Excelente! La obra es un símbolo de resistencia pacífica mediante la inteligencia y la sátira.</div>
                     </div>
 
                     <div class="quiz-box">
-                        <h3>8. Las máscaras con piel rosada, ojos claros y bigotes representan a los españoles.</h3>
+                        <h3>8. En el vestuario, las máscaras con piel rosada, ojos claros y bigotes rubios representan a los españoles.</h3>
                         <input type="radio" id="q8-v" name="q8" class="correct-answer">
                         <label for="q8-v" class="quiz-btn">Verdadero</label>
                         <input type="radio" id="q8-f" name="q8" class="wrong-answer">
                         <label for="q8-f" class="quiz-btn">Falso</label>
-                        <div class="feedback msg-right">✅ ¡Correcto! Se tallaban así para caricaturizar a los conquistadores.</div>
-                        <div class="feedback msg-wrong">❌ Incorrecto. Es verdadero, así diferenciaban las clases sociales.</div>
+                        <div class="feedback msg-right">✅ ¡Correcto! Las máscaras se tallaban así para caricaturizar los rasgos de los conquistadores y autoridades.</div>
+                        <div class="feedback msg-wrong">❌ Incorrecto. Es verdadero, las máscaras diferenciaban las clases sociales de esta forma.</div>
                     </div>
 
                 </div>
 
+                <!-- CONTENEDOR DEL PUNTAJE DINÁMICO -->
                 <div class="quiz-score">
                     <h3>🏆 Tu Puntuación:</h3>
                 </div>
@@ -257,6 +388,7 @@
 
     </main>
 
+    <!-- Pie de página -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 - El Güegüense: Orgullo Folclórico e Identidad de Nicaragua</p>
