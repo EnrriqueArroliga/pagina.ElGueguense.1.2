@@ -1,4 +1,6 @@
-
+/* ==========================================================================
+   RESET Y VARIABLES DE DISEÑO
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -399,21 +401,21 @@ html {
 }
 
 /* ==========================================================================
-   QUIZ INTERACTIVO CON CONTEO (PURO CSS)
+   QUIZ INTERACTIVO RESPONSIVO Y OPTIMIZADO (PURO CSS)
    ========================================================================== */
 .quiz-container {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+    display: grid;
+    /* En teléfonos se verá en 1 columna, en PC en 2 columnas (ver Media Query abajo) */
+    grid-template-columns: 1fr; 
+    gap: 20px;
     margin-top: 20px;
-    /* ⬇️ Creamos la variable CSS "aciertos" y la iniciamos en 0 */
-    counter-reset: aciertos; 
+    counter-reset: aciertos; /* Inicia el contador */
 }
 
 .quiz-box {
     background-color: #FDFBf7;
     border: 1px solid #E5DFD3;
-    padding: 20px;
+    padding: 22px;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
@@ -421,13 +423,16 @@ html {
 .quiz-box h3 {
     color: var(--text-dark);
     font-size: 1.05rem;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    line-height: 1.4;
 }
 
+/* 🛑 REGLA CLAVE PARA OCULTAR LAS BOLITAS DE RADIO ORIGINALES */
 .quiz-box input[type="radio"] {
-    display: none;
+    display: none !important;
 }
 
+/* Estilo de los botones interactivos */
 .quiz-btn {
     display: inline-block;
     background-color: #FFFFFF;
@@ -437,7 +442,9 @@ html {
     cursor: pointer;
     font-weight: bold;
     margin-right: 10px;
+    margin-bottom: 10px;
     transition: all 0.2s ease;
+    color: #333;
 }
 
 .quiz-btn:hover {
@@ -445,13 +452,15 @@ html {
     background-color: #fcebeb;
 }
 
+/* Estilo al seleccionar una respuesta */
 .quiz-box input[type="radio"]:checked + .quiz-btn {
     background-color: var(--primary-red);
     color: #FFFFFF;
     border-color: var(--primary-red);
 }
 
-.feedback {
+/* 🛑 OCULTAR LOS MENSAJES DE RESPUESTA POR DEFECTO */
+.quiz-box .feedback {
     display: none;
     margin-top: 15px;
     padding: 12px 15px;
@@ -472,18 +481,17 @@ html {
     border-left: 4px solid #F44336;
 }
 
-/* LÓGICA CSS PARA MOSTRAR LAS RESPUESTAS AL HACER CLIC */
-#q1-v:checked ~ .q1-v-msg, #q1-f:checked ~ .q1-f-msg { display: block; }
-#q2-v:checked ~ .q2-v-msg, #q2-f:checked ~ .q2-f-msg { display: block; }
-#q3-v:checked ~ .q3-v-msg, #q3-f:checked ~ .q3-f-msg { display: block; }
-#q4-v:checked ~ .q4-v-msg, #q4-f:checked ~ .q4-f-msg { display: block; }
-#q5-v:checked ~ .q5-v-msg, #q5-f:checked ~ .q5-f-msg { display: block; }
-#q6-v:checked ~ .q6-v-msg, #q6-f:checked ~ .q6-f-msg { display: block; }
-#q7-v:checked ~ .q7-v-msg, #q7-f:checked ~ .q7-f-msg { display: block; }
-#q8-v:checked ~ .q8-v-msg, #q8-f:checked ~ .q8-f-msg { display: block; }
+/* LÓGICA CSS SIMPLIFICADA: MOSTRAR MENSAJE SOLO CUANDO SE HACE CLIC */
+.quiz-box input.wrong-answer:checked ~ .msg-wrong {
+    display: block !important;
+}
 
-/* 🧠 LÓGICA MATEMÁTICA: SI UNA CAJA "TIENE" UNA RESPUESTA CORRECTA MARCADA, SUMA 1 */
-.quiz-box:has(.correct-answer:checked) {
+.quiz-box input.correct-answer:checked ~ .msg-right {
+    display: block !important;
+}
+
+/* 🧠 LÓGICA MATEMÁTICA: SUMAR PUNTOS AL ACIERTO (SOPORTE MODERNO) */
+.quiz-box:has(input.correct-answer:checked) {
     counter-increment: aciertos;
 }
 
@@ -505,7 +513,7 @@ html {
     color: #8B0000;
 }
 
-/* INYECTAR EL NÚMERO DE PUNTOS DINÁMICAMENTE EN PANTALLA */
+/* INYECTAR EL NÚMERO DE PUNTOS DINÁMICAMENTE */
 .quiz-score::after {
     content: counter(aciertos) " de 8 aciertos";
     display: block;
@@ -515,7 +523,7 @@ html {
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
 }
 
-/* Botón de Reinicio (Reset) */
+/* Botón de Reinicio */
 .quiz-reset-container {
     text-align: center;
     margin-top: 25px;
@@ -553,14 +561,22 @@ html {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (TELÉFONOS)
+   RESPONSIVE DESIGN (TELÉFONOS Y COMPUTADORAS)
    ========================================================================== */
-@media (max-width: 768px) {
+/* Regla exclusiva para Computadoras/Pantallas Anchas */
+@media (min-width: 768px) {
+    .quiz-container {
+        grid-template-columns: 1fr 1fr; /* Dividir el Quiz en 2 columnas */
+    }
+}
+
+/* Reglas para Teléfonos Móviles */
+@media (max-width: 767px) {
     .main-title {
         font-size: 2.2rem;
         letter-spacing: 2px;
         -webkit-text-fill-color: initial;
-        color: #ffbb00;
+        color: #FFD700;
         background: none;
     }
 
@@ -576,14 +592,11 @@ html {
         max-height: 180px;
     }
 
-    .grid-2 {
+    .grid-2, .grid-2.reverse {
         grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .grid-2.reverse {
         display: flex;
         flex-direction: column-reverse;
+        gap: 20px;
     }
 
     .nav-item {
@@ -597,5 +610,9 @@ html {
 
     .image-block img {
         height: 220px;
+    }
+    
+    .quiz-score::after {
+        font-size: 1.8rem;
     }
 }
